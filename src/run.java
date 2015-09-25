@@ -36,6 +36,10 @@ public class run {
         System.out.println("Then he added:");
 
         Koki.fly();
+
+        void newAnimalCame(Class className, String name ) {
+
+        }
     }
 
 }
