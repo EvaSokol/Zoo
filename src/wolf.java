@@ -30,5 +30,6 @@ public class wolf extends animal implements jump{
             System.out.println("<<<<<<<<<<<<< " + super.name("object " + this.name + " >>>>>>>>>>>>>>>>>"));
         }
 
+
     }
 

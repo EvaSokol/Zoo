@@ -1,5 +1,5 @@
 /**
- * Created by MASK on 23/09/2015.
+  Created by MASK on 23/09/2015.
  */
 public class run {
 
@@ -37,9 +37,13 @@ public class run {
 
         Koki.fly();
 
-        void newAnimalCame(Class className, String name ) {
+        newAnimalCame(new wolf(4, 3, "Dark", "Vasya", "male"));
+//        newAnimalCame(wolf, "Vasya");
 
-        }
+    }
+
+    protected static void newAnimalCame(animal an) {
+        System.out.println(an.age);
     }
 
 }
