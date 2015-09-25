@@ -3,7 +3,7 @@
  */
 public class run {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
 
         wolf Jack = new wolf(5, 2, "Gray", "Jack", "male");
 
@@ -37,13 +37,23 @@ public class run {
 
         Koki.fly();
 
+        // -----freestyle---------------------
+
         newAnimalCame(new wolf(4, 3, "Dark", "Vasya", "male"));
-//        newAnimalCame(wolf, "Vasya");
+
+        convert(Jack);
 
     }
 
     protected static void newAnimalCame(animal an) {
-        System.out.println(an.age);
+        System.out.println("new animal age = " + an.age);
+    }
+
+    static void convert(wolf an) throws CloneNotSupportedException {
+        wolf georg = (wolf) an.clone();
+        georg.age = 1;
+        System.out.println("georg's age = " + georg.age);
+
     }
 
 }

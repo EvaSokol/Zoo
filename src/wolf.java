@@ -1,7 +1,7 @@
 /**
  * Created by MASK on 23/09/2015.
  */
-public class wolf extends animal implements jump{
+public class wolf extends animal implements jump, Cloneable{
 
         String name;
         String sex;
@@ -30,6 +30,9 @@ public class wolf extends animal implements jump{
             System.out.println("<<<<<<<<<<<<< " + super.name("object " + this.name + " >>>>>>>>>>>>>>>>>"));
         }
 
-
+    @Override
+    protected wolf clone() throws CloneNotSupportedException {
+        return new wolf(this.age, this.height, this.color, this.name, this.sex);
     }
+}
 
