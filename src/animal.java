@@ -4,25 +4,27 @@
 public abstract class animal {
     int age, height;
     String color;
+    String name;
+    String sex;
 
-    animal(int age, int height, String color) {
+    animal(int age, int height, String color, String name, String sex) {
         this.age = age;
         this.height = height;
         this.color = color;
+        this.name = name;
+        this.sex = sex;
     }
 
+    public  String getName() {
+        return this.name;
+    }
     public void move(int steps) {
     }
 
-    void voice() {
-    }
+    abstract void voice();
 
     final void newAnimal() {
         System.out.println("Some new animal came here...");
-    }
-
-    String name(String name) {
-        return getClass().toString() + " " + name;
     }
 
 }

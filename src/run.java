@@ -5,55 +5,39 @@ public class run {
 
     public static void main(String[] args) throws CloneNotSupportedException {
 
-        wolf Jack = new wolf(5, 2, "Gray", "Jack", "male");
+        getNewAnimal(new wolf(5, 2, "Gray", "Jack", "male"));
+        getNewAnimal(new parrot(1, 1, "Green", "Koki", "female"));
+        getNewAnimal(new wolf(4, 3, "Dark", "Vasya", "male"));
+        getNewAnimal(new parrot(1, 1, "Blue", "Mario", "male"));
 
-        Jack.name();
+    }
 
-        Jack.newAnimal();
+    protected static void getNewAnimal(animal an) {
+        // print: "Some new animal came here..."
+        an.newAnimal();
 
-        Jack.move((int) (Math.random() * 5) + 2);
+        System.out.println("Oh, it's " + an.getName() + "!!!");
+
+        // print: animal moved for few steps
+        an.move((int) (Math.random() * 5) + 2);
 
         System.out.println("He said:");
 
-        Jack.jump();
+        // he sad about his abilities
+        jump jumper = (an instanceof jump)? ((jump) an) : null;
+        if (jumper != null) jumper.jump();
 
-        Jack.voice();
+        fly flier = (an instanceof fly)? ((fly) an) : null;
+        if (flier != null) flier.fly();
 
-        parrot Koki = new parrot(1, 1, "Green", "Koki", "female");
+        if (an.sex == "male")
+            System.out.println("And he left saying only...");
+        else
+            System.out.println("And she left saying only...");
+        an.voice();
 
-        Koki.name();
-
-        Koki.newAnimal();
-
-        Koki.move((int) (Math.random() * 5) + 2);
-
-        System.out.println("And shout:");
-
-        Koki.jump();
-
-        Koki.voice();
-
-        System.out.println("Then he added:");
-
-        Koki.fly();
-
-        // -----freestyle---------------------
-
-        newAnimalCame(new wolf(4, 3, "Dark", "Vasya", "male"));
-
-        convert(Jack);
 
     }
 
-    protected static void newAnimalCame(animal an) {
-        System.out.println("new animal age = " + an.age);
-    }
-
-    static void convert(wolf an) throws CloneNotSupportedException {
-        wolf georg = (wolf) an.clone();
-        georg.age = 1;
-        System.out.println("georg's age = " + georg.age);
-
-    }
 
 }

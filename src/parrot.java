@@ -3,37 +3,29 @@
  */
 public class parrot extends animal implements jump, fly {
 
-    String name;
-    String sex;
-    public int FlyLenght = 4;
+    public int FlyLength = 4;
     public int JumpHeight = 3;
 
     parrot(int age, int height, String color, String name, String sex) {
-        super(age, height, color);
-        this.name = name;
-        this.sex = sex;
+        super(age, height, color, name, sex);
     }
-
 
     @Override
     public void fly() {
-        System.out.println("- I can fly and I'm flying!");
+        System.out.println("- I can fly " + FlyLength + " hours!");
     }
 
     @Override
     public void jump() {
-        System.out.print("- I'm jumping for " + JumpHeight + " santimeters!");
+        System.out.println("- I'm jumping for " + JumpHeight + " santimeters!");
     }
 
     public void move(int steps) {
-        System.out.println(color + " parrot have jumped " + steps + " steps.");
+        System.out.println(color + " parrot has jumped " + steps + " steps.");
     }
 
     void voice() {
-        System.out.println(" Durrrak!!!");
+        System.out.println("- Durrrak!!!");
     }
 
-    void name() {
-        System.out.println("<-<-<-<-< " + super.name("object " + this.name + " >->->->->->"));
-    }
 }
