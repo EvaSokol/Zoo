@@ -3,7 +3,7 @@
  */
 public class run {
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args){
 
         getNewAnimal(new wolf(5, 2, "Gray", "Jack", "male"));
         getNewAnimal(new parrot(1, 1, "Green", "Koki", "female"));
@@ -30,7 +30,7 @@ public class run {
         fly flier = (an instanceof fly)? ((fly) an) : null;
         if (flier != null) flier.fly();
 
-        if (an.sex == "male")
+        if (!an.sex.contains("female"))
             System.out.println("And he left saying only...");
         else
             System.out.println("And she left saying only...");
