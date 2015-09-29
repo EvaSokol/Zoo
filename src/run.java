@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 
 /**
   Created by MASK on 23/09/2015.
  */
 public class run {
 
-    enum Animaltype {wolf, parrot}
     public static void main(String[] args){
 
 //        getNewAnimal(new wolf(5, 2, "Gray", "Jack", "male"));
@@ -18,35 +18,55 @@ public class run {
         ArrayList<String> stringBuffer = DataBase.ReadFile();
         stringBuffer.remove(0); //remove first service string
 
-        // get array of animals and their parameters
-        int animalcount = stringBuffer.size(); // number of animals
-        String[][] array = new String[animalcount][6];
+        LinkedList<String[]> animal_list = new LinkedList<String[]>();
         Iterator<String> iterator = stringBuffer.iterator();
-        String line;
-        for (int i=0; i<animalcount; i++) {
-            line = iterator.next();
-            array[i] = line.split(",");
-//            for (String s : array[i])
-//                System.out.println(s);
-        }
-
-        Animaltype animalclass = Animaltype.wolf;
-        String[] thisanimal;
-        for (int j=0; j<animalcount; j++){
-            thisanimal = array[j];
-            for (String item : thisanimal)
-                System.out.println(item);
-            switch (animalclass) {  //get class of new animal
-                case wolf:
-//                    getNewAnimal(new wolf(Integer.parseInt(array[j][1]), Integer.parseInt(array[j][2]), array[j][3], array[j][4], array[j][5]));
-                    getNewAnimal(new wolf(5, 2, "Gray", "Jack", "male"));
-                    break;
-                default:
-                    System.out.println("Nevedoma zverushka");
+        String[] temp_string_array;
+        String temp_string;
+        while (iterator.hasNext()) {
+            temp_string = iterator.next();
+            temp_string_array = temp_string.split(",");
+            animal_list.add(temp_string_array);
+            for (String str : temp_string_array) {
+                System.out.print(str.length() + " : ");
+                System.out.println(str);
             }
         }
 
-    }
+        String animal_type;
+        String[] try_array;
+        for (String[] one_animal : animal_list) {
+            animal_type = one_animal[0];
+            if (animal_type.equalsIgnoreCase("wolf"))
+                    getNewAnimal(new wolf(
+                            Integer.parseInt(one_animal[1]), Integer.parseInt(one_animal[2]),
+                            one_animal[3], one_animal[4], one_animal[5]));
+            if (animal_type.equalsIgnoreCase("parrot"))
+                getNewAnimal(new wolf(5, 2, "Gray", "Jack", "male"));
+            else
+                    System.out.println(one_animal[0] + " " + "Nevedoma zverushka");
+            }
+        }
+
+
+//        Animal_type animalclass = Animaltype.wolf;
+//        String[] thisanimal;
+//        for (int j=1; j<animalcount; j++){
+//            thisanimal = array[j];
+//            for (String item : thisanimal)
+//                System.out.println(item);
+//            switch (animalclass) {  //get class of new animal
+//                case wolf:
+////                    getNewAnimal(new wolf(Integer.parseInt(array[j][1]), Integer.parseInt(array[j][2]), array[j][3], array[j][4], array[j][5]));
+//                    System.out.println(thisanimal[1]);
+//
+////                    getNewAnimal(new wolf(5, 2, "Gray", "Jack", "male"));
+//                    break;
+//                default:
+//                    System.out.println("Nevedoma zverushka");
+//            }
+//        }
+
+
 
     protected static void getNewAnimal(animal an) {
         // print: "Some new animal came here..."
