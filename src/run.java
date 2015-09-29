@@ -27,8 +27,7 @@ public class run {
             temp_string_array = temp_string.split(",");
             animal_list.add(temp_string_array);
             for (String str : temp_string_array) {
-                System.out.print(str.length() + " : ");
-                System.out.println(str);
+//                System.out.println(str);
             }
         }
 
