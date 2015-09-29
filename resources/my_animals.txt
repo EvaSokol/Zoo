@@ -1,5 +1,5 @@
 ﻿begin
-wolf,5,2,Gray,Jack,male
-parrot,1,1,Green,Koki,female
-wolf,4,3,Dark,Vasya,male
-parrot,1,1,Blue,Mario,male
+Wolf,5,2,Gray,Jack,male
+Parrot,1,1,Green,Koki,female
+Wolf,4,3,Dark,Vasya,male
+Parrot,1,1,Blue,Mario,male
