@@ -3,36 +3,17 @@ import java.util.LinkedList;
 
 public class Run {
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
 
-//        getNewAnimal(new Wolf(5, 2, "Gray", "Jack", "male"));
-//        getNewAnimal(new Parrot(1, 1, "Green", "Koki", "female"));
-//        getNewAnimal(new Wolf(4, 3, "Dark", "Vasya", "male"));
-//        getNewAnimal(new Parrot(1, 1, "Blue", "Mario", "male"));
+        LinkedList<Animal> AnimalList = DataBase.getAnimalList();
 
-        LinkedList<String[]> animal_list = DataBase.getAnimalList();
-//        animalPresentation(animal_list);
+        animalPresentation(AnimalList);
 
-//        for (an : animal_list)
-//            an.get
-        }
 
-    private static void animalPresentation(LinkedList<String[]> animal_list) {
-        String animal_type;
-        String[] try_array;
-        for (String[] one_animal : animal_list) {
-            animal_type = one_animal[0];
-            if (animal_type.equalsIgnoreCase("Wolf"))
-                    getNewAnimal(new Wolf(
-                            Integer.parseInt(one_animal[1]), Integer.parseInt(one_animal[2]),
-                            one_animal[3], one_animal[4], one_animal[5]));
-            if (animal_type.equalsIgnoreCase("Parrot"))
-                getNewAnimal(new Parrot(
-                        Integer.parseInt(one_animal[1]), Integer.parseInt(one_animal[2]),
-                        one_animal[3], one_animal[4], one_animal[5]));
-            else
-                    System.out.println(one_animal[0] + " " + "Nevedoma zverushka");
-            }
+    }
+
+    private static void animalPresentation(LinkedList<Animal> animal_list) {
+        animal_list.forEach(animal -> getNewAnimal(animal));
     }
 
     protected static void getNewAnimal(Animal an) {

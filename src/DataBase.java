@@ -8,6 +8,27 @@ public class DataBase {
 
     static String filepath = "resources/my_animals.txt";
 
+    protected static LinkedList<Animal> getAnimalList() {
+        String animal_type;
+        LinkedList<String[]> data_list = getArrayData();
+        LinkedList<Animal> AnimalList = new LinkedList<>();
+        for (String[] line : data_list) {
+            animal_type = line[0];
+            if (animal_type.equalsIgnoreCase("Wolf"))
+                AnimalList.add(new Wolf(
+                        Integer.parseInt(line[1]), Integer.parseInt(line[2]),
+                        line[3], line[4], line[5]));
+            else if (animal_type.equalsIgnoreCase("Parrot"))
+                AnimalList.add(new Parrot(
+                        Integer.parseInt(line[1]), Integer.parseInt(line[2]),
+                        line[3], line[4], line[5]));
+            else
+                System.out.println(line[0] + " " + "Nevedoma zverushka");
+        }
+        System.out.println("There are " + AnimalList.size() + " animals.");
+        return AnimalList;
+    }
+
     public static ArrayList<String> ReadFile() {
         ArrayList<String> stringBuffer = new ArrayList<String>();
         try {
@@ -34,7 +55,7 @@ public class DataBase {
         return stringBuffer;
     }
 
-    protected static LinkedList<String[]> getAnimalList() {
+    protected static LinkedList<String[]> getArrayData() {
         //get data from file to string
         ArrayList<String> stringBuffer = ReadFile();
         stringBuffer.remove(0); //remove first service string
