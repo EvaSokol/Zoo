@@ -4,9 +4,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 
-public class DataBase {
+public class DataFile {
 
     static String filepath = "resources/my_animals.txt";
+
+    static int AnimalCount = 0;
 
     protected static LinkedList<Animal> getAnimalList() {
         String animal_type;
@@ -25,8 +27,12 @@ public class DataBase {
             else
                 System.out.println(line[0] + " " + "Nevedoma zverushka");
         }
-        System.out.println("There are " + AnimalList.size() + " animals.");
+        AnimalCount = AnimalList.size();
         return AnimalList;
+    }
+
+    public static int getAnimalCount() {
+        return AnimalCount;
     }
 
     public static ArrayList<String> ReadFile() {
@@ -36,8 +42,6 @@ public class DataBase {
             FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
 
-//            FileInputStream inputStream = new FileInputStream(file);
-//            String line1 = inputStream.;
 
             String line;
             while ((line = bufferedReader.readLine()) != null) {

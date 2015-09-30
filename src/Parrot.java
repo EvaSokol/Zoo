@@ -23,7 +23,7 @@ public class Parrot extends Animal implements Jump, Fly {
     }
 
     void voice() {
-        System.out.println("- Durrrak!!!");
+        System.out.println("Durrrak!!!");
     }
 
     @Override

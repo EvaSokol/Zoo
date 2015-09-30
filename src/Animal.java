@@ -17,8 +17,13 @@ public abstract class Animal {
 
     public void getAnimalDescription() {
         System.out.println(color + " color");
-        System.out.println(age + " age old");
-        System.out.println("Height is " + height + "meters");
+
+        if (age == 1) System.out.println(age + " age old");
+            else System.out.println(age + " ages old");
+
+        if (height == 1) System.out.println("Height is " + height + " meter");
+            else System.out.println("Height is " + height + " meters");
+
         if (!sex.contains("female")) {
             System.out.println("His name is " + name);
             System.out.print("His voice is: ");

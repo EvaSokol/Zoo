@@ -5,43 +5,62 @@ public class Run {
 
     public static void main(String[] args) {
 
-        LinkedList<Animal> AnimalList = DataBase.getAnimalList();
+        LinkedList<Animal> AnimalList = DataFile.getAnimalList();
 
-        animalPresentation(AnimalList);
+        System.out.println("There are " + DataFile.getAnimalCount() + " animals");
 
+//        allAnimalPresentation(AnimalList);
+
+//        AnimalList.forEach(animal -> getAllParameters(animal));
+
+//        AnimalList.forEach(animal -> animal.getAnimalDescription());
+
+        getAbilities(AnimalList.get(3));
 
     }
 
-    private static void animalPresentation(LinkedList<Animal> animal_list) {
-        animal_list.forEach(animal -> getNewAnimal(animal));
+    protected static void getAbilities(Animal animal) {
+        if (animal instanceof Jump) System.out.println("Jumping");
+        if (animal instanceof Fly) System.out.println("Flying");
+
     }
 
-    protected static void getNewAnimal(Animal an) {
+    protected static void getAllParameters(Animal animal) {
+        System.out.println(animal.getClass());
+        System.out.println(animal.getName());
+        System.out.println(animal.getColor());
+        System.out.println(animal.getAge());
+        System.out.println(animal.getHeight());
+        System.out.println(animal.getSex());
+    }
+
+    static void allAnimalPresentation(LinkedList<Animal> animal_list) {
+        animal_list.forEach(animal -> oneAnimalPresentation(animal));
+    }
+
+    protected static void oneAnimalPresentation(Animal animal) {
         // print: "Some new Animal came here..."
-        an.newAnimal();
+        animal.newAnimal();
 
-        System.out.println("Oh, it's " + an.getName() + "!!!");
+        System.out.println("Oh, it's " + animal.getName() + "!!!");
 
         // print: Animal moved for few steps
-        an.move((int) (Math.random() * 5) + 2);
+        animal.move((int) (Math.random() * 5) + 2);
 
-        if (!an.sex.contains("female"))
+        if (!animal.sex.contains("female"))
             System.out.println("He said:");
         else
             System.out.println("She said:");
 
         // he sad about his abilities
-        Jump jumper = (an instanceof Jump)? ((Jump) an) : null;
-        if (jumper != null) jumper.jump();
+        if (animal instanceof Jump) ((Jump) animal).jump();
+        if (animal instanceof Fly) ((Fly) animal).fly();
 
-        Fly flier = (an instanceof Fly)? ((Fly) an) : null;
-        if (flier != null) flier.fly();
-
-        if (!an.sex.contains("female"))
+        if (!animal.sex.contains("female"))
             System.out.println("And he left saying only...");
         else
             System.out.println("And she left saying only...");
-        an.voice();
+        animal.voice();
 
 
     }
