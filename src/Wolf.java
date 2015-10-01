@@ -1,6 +1,3 @@
-/**
- * Created by MASK on 23/09/2015.
- */
 public class Wolf extends Animal implements Jump, Cloneable{
 
         public int JumpHeight = 3;

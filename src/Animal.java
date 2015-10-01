@@ -56,8 +56,8 @@ public abstract class Animal {
     public  String getName() {
         return this.name;
     }
-    public void move(int steps) {
-    }
+
+    abstract public void move(int steps);
 
     abstract void voice();
 

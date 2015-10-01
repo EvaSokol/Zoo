@@ -48,11 +48,7 @@ public class DataFile {
                 stringBuffer.add(line);
             }
             fileReader.close();
-//            System.out.println("Contents of file:");
-//            Iterator<String> iterator = stringBuffer.iterator();
-//            while (iterator.hasNext()){
-//                System.out.println(iterator.next());
-//            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -72,9 +68,6 @@ public class DataFile {
             temp_string = iterator.next();
             temp_string_array = temp_string.split(",");
             animal_list.add(temp_string_array);
-            for (String str : temp_string_array) {
-//                System.out.println(str);
-            }
         }
         return animal_list;
     }
