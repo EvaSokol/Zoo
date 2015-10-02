@@ -9,15 +9,18 @@ public class Run {
 
         System.out.println("There are " + DataFile.getAnimalCount() + " animals");
 
-//        allAnimalPresentation(AnimalList);
+        allAnimalPresentation(AnimalList);
 
-//        AnimalList.forEach(animal -> getAllParameters(animal));
+        AnimalList.forEach(animal -> getAllParameters(animal));
 
 //        AnimalList.forEach(animal -> animal.getAnimalDescription());
 
         getAbilities(AnimalList.get(3));
 
     }
+
+    // void getSingleAnimal(array){}
+    // void getOldestAnimal(array) {}
 
     protected static void getAbilities(Animal animal) {
         if (animal instanceof Jump) System.out.println("Jumping");
@@ -35,7 +38,7 @@ public class Run {
     }
 
     static void allAnimalPresentation(LinkedList<Animal> animal_list) {
-        animal_list.forEach(animal -> oneAnimalPresentation(animal));
+//        animal_list.forEach(animal -> oneAnimalPresentation(animal));
     }
 
     protected static void oneAnimalPresentation(Animal animal) {
