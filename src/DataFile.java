@@ -35,59 +35,18 @@ public class DataFile {
         return AnimalCount;
     }
 
-    public static ArrayList<String> ReadFile() {
-        ArrayList<String> stringBuffer = new ArrayList<String>();
-        try {
-            File file = new File(filepath);
-            FileReader fileReader = new FileReader(file);
-            BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-
+    public static ArrayList<String> ReadFile(){
+        ArrayList<String> stringBuffer = new ArrayList<>();
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath))) {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 stringBuffer.add(line);
-            }
-            fileReader.close();
-
+                }
         } catch (IOException e) {
-            e.printStackTrace();
-        }
+            e.printStackTrace();}
+
         return stringBuffer;
     }
-
-//    public static ArrayList<String> ReadFile1() {
-//        ArrayList<String> stringBuffer = new ArrayList<String>();
-//        try {
-//
-//            try(FileInputStream input = new FileInputStream(filepath)) {
-//                BufferedReader bufferedReader = new BufferedReader(input);
-//                int data = input.read();
-//                while(data != -1){
-//                    System.out.print((char) data);
-//                    data = input.read();
-//                }
-//            }
-//
-//            File file = new File(filepath);
-//            FileReader fileReader = new FileReader(file);
-//            BufferedReader bufferedReader = new BufferedReader();
-//
-//            String line;
-//            while ((line = bufferedReader.readLine()) != null) {
-//                stringBuffer.add(line);
-//            }
-//            fileReader.close();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        return stringBuffer;
-//    }
-
-//    void mongotest() {
-//        MongoClient mongo = new MongoClient( "localhost" , 27017 );
-//    }
-
 
     protected static LinkedList<String[]> getArrayData() {
         //get data from file to string

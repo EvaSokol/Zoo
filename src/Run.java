@@ -11,7 +11,7 @@ public class Run {
 
         allAnimalPresentation(AnimalList);
 
-        AnimalList.forEach(animal -> getAllParameters(animal));
+//        AnimalList.forEach(animal -> getAllParameters(animal));
 
 //        AnimalList.forEach(animal -> animal.getAnimalDescription());
 
