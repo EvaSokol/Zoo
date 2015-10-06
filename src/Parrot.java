@@ -4,8 +4,8 @@ public class Parrot extends Animal implements Jump, Fly {
     public int FlyLength = 4;
     public int JumpHeight = 3;
 
-    Parrot(int age, int height, String color, String name, String sex) {
-        super(age, height, color, name, sex);
+    Parrot(String type, int age, int height, String color, String name, String sex) {
+        super(type, age, height, color, name, sex);
     }
 
     @Override

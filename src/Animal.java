@@ -6,8 +6,10 @@ public abstract class Animal {
     String color;
     String name;
     String sex;
+    String type;
 
-    Animal(int age, int height, String color, String name, String sex) {
+    Animal(String type, int age, int height, String color, String name, String sex) {
+        this.type = type;
         this.age = age;
         this.height = height;
         this.color = color;
@@ -35,6 +37,10 @@ public abstract class Animal {
             voice();
         }
 
+    }
+
+    public String getType() {
+        return type;
     }
 
     public int getAge() {

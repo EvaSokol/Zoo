@@ -1,3 +1,6 @@
+
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 
 
@@ -17,9 +20,13 @@ public class Run {
 
 //        getAbilities(AnimalList.get(3));
 
-//        getSingleAnimal(AnimalList);
+//        getSingleAnimal1(AnimalList);
 
-        printOldestAnimals(AnimalList);
+//        printOldestAnimals(AnimalList);
+
+        HashSet<Integer> numb = new HashSet<>(200, 34);
+        System.out.println(numb.size());
+
     }
 
     static void getSingleAnimal(LinkedList<Animal> AnimalList) {
@@ -54,6 +61,40 @@ public class Run {
              if (parrot_male_men < 0)
                  System.out.println("There are " + parrot_male_men + " single parrot girl(s).");
          }
+
+    static void getSingleAnimal1(LinkedList<Animal> AnimalList) {
+        int wolf_male_count = 0;
+        int wolf_female_count = 0;
+        int parrot_male_count = 0;
+        int parrot_female_count = 0;
+        HashSet<String> typeList = DataFile.getTypeSet();
+
+        for (Animal animal : AnimalList) {
+            if (animal.getType().equalsIgnoreCase("Wolf")) {
+                if (animal.getSex().contains("female"))
+                    wolf_female_count++;
+                else wolf_male_count++;
+            }
+            if (animal.getType().equalsIgnoreCase("parrot")) {
+                if (animal.getSex().contains("female"))
+                    wolf_female_count++;
+                else wolf_male_count++;
+            }
+        }
+
+        int wolf_male_men = wolf_male_count - wolf_female_count;
+        if (wolf_male_men > 0)
+            System.out.println("There are " + wolf_male_men + " single wolf boy(s).");
+        if (wolf_male_men < 0)
+            System.out.println("There are " + wolf_male_men + " single wolf girl(s).");
+
+        int parrot_male_men = parrot_male_count - parrot_female_count;
+
+        if (parrot_male_men > 0)
+            System.out.println("There are " + parrot_male_men + " single parrot boy(s).");
+        if (parrot_male_men < 0)
+            System.out.println("There are " + parrot_male_men + " single parrot girl(s).");
+    }
 
     static void printOldestAnimals(LinkedList<Animal> AnimalList) {
         int max_age = 0;

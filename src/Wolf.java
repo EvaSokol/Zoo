@@ -2,8 +2,8 @@ public class Wolf extends Animal implements Jump, Cloneable{
 
         public int JumpHeight = 3;
 
-        public Wolf(int age, int height, String color, String name, String sex) {
-            super(age, height, color, name, sex);
+        public Wolf(String type, int age, int height, String color, String name, String sex) {
+            super(type, age, height, color, name, sex);
 
         }
 
@@ -23,7 +23,7 @@ public class Wolf extends Animal implements Jump, Cloneable{
 
     @Override
     protected Wolf clone() throws CloneNotSupportedException {
-        return new Wolf(this.age, this.height, this.color, this.name, this.sex);
+        return new Wolf(this.type, this.age, this.height, this.color, this.name, this.sex);
     }
 
     @Override
