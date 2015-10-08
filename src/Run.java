@@ -1,5 +1,4 @@
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -20,85 +19,97 @@ public class Run {
 
 //        getAbilities(AnimalList.get(3));
 
-//        getSingleAnimal1(AnimalList);
+        PrintAnimalList(AnimalList);
+        System.out.println("-------------");
+
+        SortByAge(AnimalList);
+
+        PrintAnimalList(AnimalList);
+
+//        printSingleAnimal(AnimalList);
+
+//        removeSingleAnimals(AnimalList);
 
 //        printOldestAnimals(AnimalList);
 
-        HashSet<Integer> numb = new HashSet<>(200, 34);
-        System.out.println(numb.size());
-
     }
 
-    static void getSingleAnimal(LinkedList<Animal> AnimalList) {
-         int wolf_male_count = 0;
-         int wolf_female_count = 0;
-         int parrot_male_count = 0;
-         int parrot_female_count = 0;
+    static void removeSingleAnimals(LinkedList<Animal> AnimalList) {
+        LinkedList<Animal> singleAnimalList = getSingleAnimals(AnimalList);
+        AnimalList.removeAll(singleAnimalList);
+        System.out.println("Next single animals are removed:");
+        printSingleAnimal(singleAnimalList);
+    }
 
-         for (Animal animal : AnimalList) {
-             if (animal instanceof Wolf) {
-                 if (animal.getSex().contains("female"))
-                     wolf_female_count++;
-                 else wolf_male_count++;
-             }
-             if (animal instanceof Parrot) {
-                 if (animal.getSex().contains("female"))
-                     wolf_female_count++;
-                 else wolf_male_count++;
-             }
+    static void printSingleAnimal(LinkedList<Animal> singleAnimalList) {
+        for (Animal animal: singleAnimalList) {
+            System.out.println(animal.getType() + " " + animal.getSex() + " " + animal.getName());
+        }
          }
 
-             int wolf_male_men = wolf_male_count - wolf_female_count;
-             if (wolf_male_men > 0)
-                 System.out.println("There are " + wolf_male_men + " single wolf boy(s).");
-             if (wolf_male_men < 0)
-                 System.out.println("There are " + wolf_male_men + " single wolf girl(s).");
+    static LinkedList<Animal> getSingleAnimals(LinkedList<Animal> AnimalList) {
+        int wolf_male_men = 0;
+        int parrot_male_men =0;
 
-             int parrot_male_men = parrot_male_count - parrot_female_count;
-
-             if (parrot_male_men > 0)
-                 System.out.println("There are " + parrot_male_men + " single parrot boy(s).");
-             if (parrot_male_men < 0)
-                 System.out.println("There are " + parrot_male_men + " single parrot girl(s).");
-         }
-
-    static void getSingleAnimal1(LinkedList<Animal> AnimalList) {
-        int wolf_male_count = 0;
-        int wolf_female_count = 0;
-        int parrot_male_count = 0;
-        int parrot_female_count = 0;
-        HashSet<String> typeList = DataFile.getTypeSet();
+        LinkedList<Animal> singleAnimals = new LinkedList<>();
 
         for (Animal animal : AnimalList) {
             if (animal.getType().equalsIgnoreCase("Wolf")) {
                 if (animal.getSex().contains("female"))
-                    wolf_female_count++;
-                else wolf_male_count++;
+                    wolf_male_men --;
+                else wolf_male_men ++;
             }
             if (animal.getType().equalsIgnoreCase("parrot")) {
                 if (animal.getSex().contains("female"))
-                    wolf_female_count++;
-                else wolf_male_count++;
+                    parrot_male_men --;
+                else parrot_male_men ++;
             }
         }
 
-        int wolf_male_men = wolf_male_count - wolf_female_count;
-        if (wolf_male_men > 0)
+        if (wolf_male_men > 0) {
             System.out.println("There are " + wolf_male_men + " single wolf boy(s).");
-        if (wolf_male_men < 0)
-            System.out.println("There are " + wolf_male_men + " single wolf girl(s).");
+            for (Animal animal : AnimalList) {
+                if ((wolf_male_men >0) & animal.getType().equalsIgnoreCase("wolf") & animal.getSex().equalsIgnoreCase("male")) {
+                    singleAnimals.add(animal);
+                    wolf_male_men--;
+                    }
+                }
 
-        int parrot_male_men = parrot_male_count - parrot_female_count;
+            }
+        else if (wolf_male_men < 0) {
+            System.out.println("There are " + Math.abs(wolf_male_men) + " single wolf girl(s).");
+                for (Animal animal : AnimalList) {
+                    if ((wolf_male_men <0) & animal.getType().equalsIgnoreCase("wolf") & animal.getSex().equalsIgnoreCase("female")) {
+                        singleAnimals.add(animal);
+                        wolf_male_men++;
+                    }
+            }
+        }
 
-        if (parrot_male_men > 0)
+        if (parrot_male_men > 0) {
             System.out.println("There are " + parrot_male_men + " single parrot boy(s).");
-        if (parrot_male_men < 0)
-            System.out.println("There are " + parrot_male_men + " single parrot girl(s).");
+                for (Animal animal : AnimalList) {
+                    if (parrot_male_men >0 & animal.getType().equalsIgnoreCase("parrot") & animal.getSex().equalsIgnoreCase("male")) {
+                        singleAnimals.add(animal);
+                        parrot_male_men--;
+                    }
+                }
+        }
+        else if (parrot_male_men < 0) {
+            System.out.println("There are " + Math.abs(parrot_male_men) + " single parrot girl(s).");
+                for (Animal animal : AnimalList) {
+                    if ((parrot_male_men <0) & animal.getType().equalsIgnoreCase("parrot") & animal.getSex().equalsIgnoreCase("female")) {
+                        singleAnimals.add(animal);
+                        parrot_male_men++;
+                    }
+                }
+        }
+        return singleAnimals;
     }
 
     static void printOldestAnimals(LinkedList<Animal> AnimalList) {
         int max_age = 0;
-        LinkedList<Animal> OldAnimals = new LinkedList<Animal>();
+        LinkedList<Animal> OldAnimals = new LinkedList<>();
         for (Animal animal : AnimalList) {
             if (animal.getAge() == max_age)
                 OldAnimals.add(animal);
@@ -128,7 +139,7 @@ public class Run {
     }
 
     static void allAnimalPresentation(LinkedList<Animal> animal_list) {
-//        animal_list.forEach(animal -> oneAnimalPresentation(animal));
+        animal_list.forEach(animal -> oneAnimalPresentation(animal));
     }
 
     protected static void oneAnimalPresentation(Animal animal) {
@@ -158,5 +169,12 @@ public class Run {
 
     }
 
+    protected static void PrintAnimalList(LinkedList<Animal> AnimalList) {
+        AnimalList.forEach(animal -> animal.getAnimalData());
+    }
 
+    protected static void SortByAge(LinkedList<Animal> AnimalList) {
+        Animal animal = new Wolf("a", 1, 1, "a", "a", "a");
+        AnimalList.sort((o1, o2) -> animal.compare(o1, o2));
+    }
 }

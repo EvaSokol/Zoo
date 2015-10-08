@@ -3,4 +3,7 @@ Wolf,5,2,Gray,Jack,male
 Parrot,5,1,Green,Koki,female
 Wolf,4,3,Dark,Vasya,male
 Parrot,1,1,Blue,Mario,male
+Parrot,1,1,Rose,Marina,female
 Wolf,3,4,Gray,Aloha,female
+Wolf,4,3,Dark,Miki,female
+Wolf,4,3,Dark,Saha,female

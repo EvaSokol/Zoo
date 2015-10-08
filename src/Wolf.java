@@ -1,3 +1,5 @@
+import java.util.Comparator;
+
 public class Wolf extends Animal implements Jump, Cloneable{
 
         public int JumpHeight = 3;
@@ -21,19 +23,19 @@ public class Wolf extends Animal implements Jump, Cloneable{
         }
 
 
-    @Override
-    protected Wolf clone() throws CloneNotSupportedException {
-        return new Wolf(this.type, this.age, this.height, this.color, this.name, this.sex);
-    }
+        @Override
+        protected Wolf clone() throws CloneNotSupportedException {
+            return new Wolf(this.type, this.age, this.height, this.color, this.name, this.sex);
+        }
 
-    @Override
-    public void getAnimalDescription() {
-        System.out.println("It's a wolf");
-        super.getAnimalDescription();
-        if (!sex.contains("female"))
-            System.out.println("He can jump for " + JumpHeight + "meters");
-        else
-            System.out.println("She can jump for " + JumpHeight + "meters");
+        @Override
+        public void getAnimalDescription() {
+            System.out.println("It's a wolf");
+            super.getAnimalDescription();
+            if (!sex.contains("female"))
+                System.out.println("He can jump for " + JumpHeight + "meters");
+            else
+                System.out.println("She can jump for " + JumpHeight + "meters");
+        }
     }
-}
 
