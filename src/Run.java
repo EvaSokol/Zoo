@@ -1,4 +1,4 @@
-
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -19,18 +19,21 @@ public class Run {
 
 //        getAbilities(AnimalList.get(3));
 
-        PrintAnimalList(AnimalList);
-        System.out.println("-------------");
+//        PrintAnimalList(AnimalList);
+//        System.out.println("-------------");
 
-        SortByAge(AnimalList);
+//        SortByAge(AnimalList);
 
-        PrintAnimalList(AnimalList);
+//        PrintAnimalList(AnimalList);
 
-//        printSingleAnimal(AnimalList);
+        printAnimalList(getSingleAnimals1(AnimalList));
 
-//        removeSingleAnimals(AnimalList);
+        System.out.println("-----------");
+
+        removeSingleAnimals(AnimalList);
 
 //        printOldestAnimals(AnimalList);
+
 
     }
 
@@ -38,11 +41,11 @@ public class Run {
         LinkedList<Animal> singleAnimalList = getSingleAnimals(AnimalList);
         AnimalList.removeAll(singleAnimalList);
         System.out.println("Next single animals are removed:");
-        printSingleAnimal(singleAnimalList);
+        printAnimalList(singleAnimalList);
     }
 
-    static void printSingleAnimal(LinkedList<Animal> singleAnimalList) {
-        for (Animal animal: singleAnimalList) {
+    static void printAnimalList(LinkedList<Animal> AnimalList) {
+        for (Animal animal: AnimalList) {
             System.out.println(animal.getType() + " " + animal.getSex() + " " + animal.getName());
         }
          }
@@ -105,6 +108,59 @@ public class Run {
                 }
         }
         return singleAnimals;
+    }
+
+    static LinkedList<Animal> getSingleAnimals1(LinkedList<Animal> AnimalList) {
+        LinkedList<Animal> SingleAnimals = new LinkedList<>();
+
+        HashSet<String> types = DataFile.getTypeSet();
+        ArrayList<String> ArrTypes = new ArrayList<>();
+
+        types.forEach(type -> ArrTypes.add(type));
+
+        int typesCount = types.size();
+        ArrayList<Animal>[][] PairAnimals = new ArrayList[typesCount][2];
+
+        for (int i=0; i<typesCount; i++) {
+            PairAnimals[i] = new ArrayList[2];
+        }
+
+        int index;
+        ArrayList<Animal> TypeSex = new ArrayList<>();
+
+        for (Animal animal : AnimalList) {
+            String type = animal.getType();
+            index = ArrTypes.indexOf(type);
+            if (animal.getSex().equalsIgnoreCase("male")) {
+                TypeSex.clear();
+                TypeSex.add(animal);
+                PairAnimals[index][0] = TypeSex;
+            }
+            else if (animal.getSex().equalsIgnoreCase("female"))
+                TypeSex.clear();
+                TypeSex.add(animal);
+                PairAnimals[index][1] = TypeSex;
+        }
+        int singles;
+
+        for (ArrayList<Animal>[] one_type : PairAnimals) {
+            singles = one_type[0].size() - one_type[1].size();
+            if (singles > 0) {
+                while (singles>0){
+                    SingleAnimals.add(one_type[0].get(singles-1));
+                    singles --;
+                }
+            }
+            else if (singles < 0) {
+                while (singles < 0) {
+                    SingleAnimals.add(one_type[1].get(singles - 1));
+                    singles ++;
+                }
+            }
+
+        }
+
+        return SingleAnimals;
     }
 
     static void printOldestAnimals(LinkedList<Animal> AnimalList) {
