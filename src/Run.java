@@ -24,11 +24,11 @@ public class Run {
 
 //        SortByAge(AnimalList);
 
-//        PrintAnimalList(AnimalList);
-
-        printAnimalList(getSingleAnimals1(AnimalList));
+        PrintAnimalList(AnimalList);
 
         System.out.println("-----------");
+
+        printAnimalList(getSingleAnimals(AnimalList));
 
         removeSingleAnimals(AnimalList);
 
@@ -51,66 +51,6 @@ public class Run {
          }
 
     static LinkedList<Animal> getSingleAnimals(LinkedList<Animal> AnimalList) {
-        int wolf_male_men = 0;
-        int parrot_male_men =0;
-
-        LinkedList<Animal> singleAnimals = new LinkedList<>();
-
-        for (Animal animal : AnimalList) {
-            if (animal.getType().equalsIgnoreCase("Wolf")) {
-                if (animal.getSex().contains("female"))
-                    wolf_male_men --;
-                else wolf_male_men ++;
-            }
-            if (animal.getType().equalsIgnoreCase("parrot")) {
-                if (animal.getSex().contains("female"))
-                    parrot_male_men --;
-                else parrot_male_men ++;
-            }
-        }
-
-        if (wolf_male_men > 0) {
-            System.out.println("There are " + wolf_male_men + " single wolf boy(s).");
-            for (Animal animal : AnimalList) {
-                if ((wolf_male_men >0) & animal.getType().equalsIgnoreCase("wolf") & animal.getSex().equalsIgnoreCase("male")) {
-                    singleAnimals.add(animal);
-                    wolf_male_men--;
-                    }
-                }
-
-            }
-        else if (wolf_male_men < 0) {
-            System.out.println("There are " + Math.abs(wolf_male_men) + " single wolf girl(s).");
-                for (Animal animal : AnimalList) {
-                    if ((wolf_male_men <0) & animal.getType().equalsIgnoreCase("wolf") & animal.getSex().equalsIgnoreCase("female")) {
-                        singleAnimals.add(animal);
-                        wolf_male_men++;
-                    }
-            }
-        }
-
-        if (parrot_male_men > 0) {
-            System.out.println("There are " + parrot_male_men + " single parrot boy(s).");
-                for (Animal animal : AnimalList) {
-                    if (parrot_male_men >0 & animal.getType().equalsIgnoreCase("parrot") & animal.getSex().equalsIgnoreCase("male")) {
-                        singleAnimals.add(animal);
-                        parrot_male_men--;
-                    }
-                }
-        }
-        else if (parrot_male_men < 0) {
-            System.out.println("There are " + Math.abs(parrot_male_men) + " single parrot girl(s).");
-                for (Animal animal : AnimalList) {
-                    if ((parrot_male_men <0) & animal.getType().equalsIgnoreCase("parrot") & animal.getSex().equalsIgnoreCase("female")) {
-                        singleAnimals.add(animal);
-                        parrot_male_men++;
-                    }
-                }
-        }
-        return singleAnimals;
-    }
-
-    static LinkedList<Animal> getSingleAnimals1(LinkedList<Animal> AnimalList) {
         LinkedList<Animal> SingleAnimals = new LinkedList<>();
 
         HashSet<String> types = DataFile.getTypeSet();
@@ -123,23 +63,20 @@ public class Run {
 
         for (int i=0; i<typesCount; i++) {
             PairAnimals[i] = new ArrayList[2];
+            PairAnimals[i][0] = new ArrayList<>();
+            PairAnimals[i][1] = new ArrayList<>();
         }
 
         int index;
-        ArrayList<Animal> TypeSex = new ArrayList<>();
 
         for (Animal animal : AnimalList) {
             String type = animal.getType();
             index = ArrTypes.indexOf(type);
             if (animal.getSex().equalsIgnoreCase("male")) {
-                TypeSex.clear();
-                TypeSex.add(animal);
-                PairAnimals[index][0] = TypeSex;
+                PairAnimals[index][0].add(animal);
             }
             else if (animal.getSex().equalsIgnoreCase("female"))
-                TypeSex.clear();
-                TypeSex.add(animal);
-                PairAnimals[index][1] = TypeSex;
+                PairAnimals[index][1].add(animal);
         }
         int singles;
 
@@ -153,7 +90,7 @@ public class Run {
             }
             else if (singles < 0) {
                 while (singles < 0) {
-                    SingleAnimals.add(one_type[1].get(singles - 1));
+                    SingleAnimals.add(one_type[1].get(Math.abs(singles) - 1));
                     singles ++;
                 }
             }
