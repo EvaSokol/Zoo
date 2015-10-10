@@ -1,5 +1,3 @@
-import java.util.Comparator;
-
 public class Wolf extends Animal implements Jump, Cloneable{
 
         public int JumpHeight = 3;

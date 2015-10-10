@@ -28,6 +28,10 @@ public class DataFile {
                 AnimalList.add(new Parrot(
                         line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
                         line[3], line[4], line[5]));
+            else if (animal_type.equalsIgnoreCase("Lion"))
+                AnimalList.add(new Lion(
+                        line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
+                        line[3], line[4], line[5]));
             else
                 System.out.println(line[0] + " " + "Nevedoma zverushka");
         }
