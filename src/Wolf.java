@@ -23,6 +23,7 @@ public class Wolf extends Animal implements Jump, Cloneable{
 
         @Override
         protected Wolf clone() throws CloneNotSupportedException {
+            super.clone();
             return new Wolf(this.type, this.age, this.height, this.color, this.name, this.sex);
         }
 

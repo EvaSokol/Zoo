@@ -24,16 +24,17 @@ public class Run {
 
 //        SortByAge(AnimalList);
 
-        PrintAnimalList(AnimalList);
+//        PrintAnimalList(AnimalList);
 
-        System.out.println("-----------");
+//        System.out.println("-----------");
 
-        printAnimalList(getSingleAnimals(AnimalList));
+//        printAnimalList(getSingleAnimals(AnimalList));
 
-        removeSingleAnimals(AnimalList);
+//        removeSingleAnimals(AnimalList);
 
 //        printOldestAnimals(AnimalList);
 
+        PrintAnimalList(getAllThisType(AnimalList, "wolf"));
 
     }
 
@@ -169,5 +170,13 @@ public class Run {
     protected static void SortByAge(LinkedList<Animal> AnimalList) {
         Animal animal = new Wolf("a", 1, 1, "a", "a", "a");
         AnimalList.sort((o1, o2) -> animal.compare(o1, o2));
+    }
+
+    protected static LinkedList<Animal> getAllThisType(LinkedList<Animal> AnimalList, String type) {
+        LinkedList<Animal> thisTypeAnimals= new LinkedList<>();
+        for (Animal animal : AnimalList)
+            if (animal.getType().equalsIgnoreCase(type))
+                thisTypeAnimals.add(animal);
+        return thisTypeAnimals;
     }
 }
