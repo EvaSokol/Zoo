@@ -38,5 +38,6 @@ public class Parrot extends Animal implements Jump, Fly {
             System.out.println("She can jump for " + JumpHeight + "meters");
             System.out.println("and fly for " + FlyLength + " hours");
         }
+        System.out.println("--------------------------");
     }
 }

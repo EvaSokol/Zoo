@@ -9,4 +9,4 @@ Parrot,1,1,Rose,Marina,female
 Wolf,3,4,Gray,Aloha,female
 Wolf,4,3,Dark,Mickey,female
 Wolf,4,3,Dark,Sasha,female
-Lion,2,7,Whit,Anna,female
+Lion,2,7,White,Anna,female

@@ -28,11 +28,12 @@ public class Lion extends Animal implements Jump, Cloneable {
 
     @Override
     public void getAnimalDescription() {
-        System.out.println("It's a wolf");
+        System.out.println("It's a lion");
         super.getAnimalDescription();
         if (!sex.contains("female"))
-            System.out.println("He can jump for " + JumpHeight + "meters");
+            System.out.println("He can jump for " + JumpHeight + " meters");
         else
-            System.out.println("She can jump for " + JumpHeight + "meters");
+            System.out.println("She can jump for " + JumpHeight + " meters");
+        System.out.println("--------------------------");
     }
 }

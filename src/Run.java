@@ -9,32 +9,36 @@ public class Run {
 
         LinkedList<Animal> AnimalList = DataFile.getAnimalList();
 
-        System.out.println("There are " + DataFile.getAnimalCount() + " animals");
+//        System.out.println("There are " + DataFile.getAnimalCount() + " animals total in the list.");
 
-//        allAnimalPresentation(AnimalList);
+//        allAnimalPresentation(AnimalList); //A little story about every animal
 
-//        AnimalList.forEach(animal -> getAllParameters(animal));
+//        AnimalList.forEach(animal -> getAllParameters(animal)); //Print list of all animal parameters
 
-//        AnimalList.forEach(animal -> animal.getAnimalDescription());
+//        AnimalList.forEach(animal -> animal.getAnimalDescription()); //get descriptions for each animal
 
-//        getAbilities(AnimalList.get(3));
+//        getAbilities(AnimalList.get(2)); // get list of abilities for some animal
 
-//        PrintAnimalList(AnimalList);
-//        System.out.println("-------------");
-
-//        SortByAge(AnimalList);
-
-//        PrintAnimalList(AnimalList);
-
+/*        ********Sort animals by age:*************/
+//        PrintAnimalList(AnimalList); // Print list of all animals: type - name - sex - age
 //        System.out.println("-----------");
+//        SortByAge(AnimalList); //Sort min -> max
+//        PrintAnimalList(AnimalList); // Sorted list
 
-//        printAnimalList(getSingleAnimals(AnimalList));
+//        printAnimalList(getSingleAnimals(AnimalList)); //print list of all single animals
 
-//        removeSingleAnimals(AnimalList);
+/*        ********Remove single animals:*************/
+//        PrintAnimalList(AnimalList); // Print list of all animals: type - name - sex - age
+//        System.out.println("-----------");
+//        removeSingleAnimals(AnimalList); //remove single animals from list and print them
+//        System.out.println("-----------");
+//        PrintAnimalList(AnimalList); // Print list of animals left in the list
 
-//        printOldestAnimals(AnimalList);
+        printOldestAnimals(AnimalList); //print list of animals with max age
 
-        PrintAnimalList(getAllThisType(AnimalList, "wolf"));
+        System.out.println("-----------");
+
+        PrintAnimalList(getAllThisType(AnimalList, "parrot")); //print list of specified type animals wolf/parrot/lion
 
     }
 
