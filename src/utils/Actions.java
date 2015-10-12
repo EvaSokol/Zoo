@@ -5,6 +5,7 @@ import animals.Fly;
 import animals.Jump;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -149,11 +150,23 @@ public class Actions {
         animalList.sort((o1, o2) -> o1.getAge() - o2.getAge());
     }
 
-    public static LinkedList<Animal> getAllThisType(LinkedList<Animal> animalList, String type) {
+    public static LinkedList<Animal> getAllThisTypeOld(LinkedList<Animal> animalList, String type) {
         LinkedList<Animal> thisTypeAnimals= new LinkedList<>();
         for (Animal animal : animalList)
             if (animal.getType().equalsIgnoreCase(type))
                 thisTypeAnimals.add(animal);
         return thisTypeAnimals;
+    }
+
+    public static LinkedList<Animal> getAllThisType(LinkedList<Animal> animalList, String type) {
+        HashMap<String, LinkedList<Animal>> map = convertToMap(animalList);
+        return map.get(type.toLowerCase());
+    }
+
+    public static HashMap<String, LinkedList<Animal>> convertToMap(LinkedList<Animal> animalList) {
+        HashMap<String, LinkedList<Animal>> map = new HashMap<String, LinkedList<Animal>>();
+        utils.DataFile.getTypeSet().forEach(type -> map.put(type.toLowerCase(), new LinkedList<Animal>()));
+        animalList.forEach(animal -> map.get(animal.getType().toLowerCase()).add(animal));
+        return map;
     }
 }

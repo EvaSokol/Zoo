@@ -27,15 +27,15 @@ public class DataFile {
         for (String[] line : data_list) {
             animal_type = line[0];
             typeSet.add(animal_type);
-            if (animal_type.equalsIgnoreCase("animals.Wolf"))
+            if (animal_type.equalsIgnoreCase("Wolf"))
                 AnimalList.add(new Wolf(
                         line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
                         line[3], line[4], line[5]));
-            else if (animal_type.equalsIgnoreCase("animals.Parrot"))
+            else if (animal_type.equalsIgnoreCase("Parrot"))
                 AnimalList.add(new Parrot(
                         line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
                         line[3], line[4], line[5]));
-            else if (animal_type.equalsIgnoreCase("animals.Lion"))
+            else if (animal_type.equalsIgnoreCase("Lion"))
                 AnimalList.add(new Lion(
                         line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
                         line[3], line[4], line[5]));

@@ -44,7 +44,7 @@ public abstract class Animal{
     }
 
     public String getType() {
-        return type;
+        return this.type;
     }
 
     public int getAge() {
