@@ -1,3 +1,10 @@
+package utils;
+
+import animals.Animal;
+import animals.Lion;
+import animals.Parrot;
+import animals.Wolf;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,7 +19,7 @@ public class DataFile {
     static int AnimalCount = 0;
     static HashSet<String> typeSet = new HashSet<>();
 
-    protected static LinkedList<Animal> getAnimalList() {
+    public static LinkedList<Animal> getAnimalList() {
         String animal_type;
         LinkedList<String[]> data_list = getArrayData();
         LinkedList<Animal> AnimalList = new LinkedList<>();
@@ -20,15 +27,15 @@ public class DataFile {
         for (String[] line : data_list) {
             animal_type = line[0];
             typeSet.add(animal_type);
-            if (animal_type.equalsIgnoreCase("Wolf"))
+            if (animal_type.equalsIgnoreCase("animals.Wolf"))
                 AnimalList.add(new Wolf(
                         line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
                         line[3], line[4], line[5]));
-            else if (animal_type.equalsIgnoreCase("Parrot"))
+            else if (animal_type.equalsIgnoreCase("animals.Parrot"))
                 AnimalList.add(new Parrot(
                         line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
                         line[3], line[4], line[5]));
-            else if (animal_type.equalsIgnoreCase("Lion"))
+            else if (animal_type.equalsIgnoreCase("animals.Lion"))
                 AnimalList.add(new Lion(
                         line[0], Integer.parseInt(line[1]), Integer.parseInt(line[2]),
                         line[3], line[4], line[5]));
@@ -73,7 +80,7 @@ public class DataFile {
         return animal_list;
     }
 
-    protected static HashSet<String> getTypeSet() {
+    public static HashSet<String> getTypeSet() {
         return typeSet;
     }
 

@@ -1,7 +1,12 @@
+import animals.Animal;
+import animals.Fly;
+import animals.Jump;
+import utils.DataFile;
+
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedList;
+
 
 
 public class Run {
@@ -10,30 +15,30 @@ public class Run {
 
         LinkedList<Animal> AnimalList = DataFile.getAnimalList();
 
-//        System.out.println("There are " + DataFile.getAnimalCount() + " animals total in the list.");
+        System.out.println("There are " + DataFile.getAnimalCount() + " animals total in the list.");
 
-//        allAnimalPresentation(AnimalList); //A little story about every animal
+        allAnimalPresentation(AnimalList); //A little story about every animal
 
-//        AnimalList.forEach(animal -> getAllParameters(animal)); //Print list of all animal parameters
+        AnimalList.forEach(animal -> getAllParameters(animal)); //Print list of all animal parameters
 
-//        AnimalList.forEach(animal -> animal.getAnimalDescription()); //get descriptions for each animal
+        AnimalList.forEach(animal -> animal.getAnimalDescription()); //get descriptions for each animal
 
-//        getAbilities(AnimalList.get(2)); // get list of abilities for some animal
+        getAbilities(AnimalList.get(2)); // get list of abilities for some animal
 
 /*        ********Sort animals by age:*************/
-//        PrintAnimalList(AnimalList); // Print list of all animals: type - name - sex - age
-//        System.out.println("-----------");
-//        SortByAge(AnimalList); //Sort min -> max
-//        PrintAnimalList(AnimalList); // Sorted list
+        PrintAnimalList(AnimalList); // Print list of all animals: type - name - sex - age
+        System.out.println("-----------");
+        SortByAge(AnimalList); //Sort min -> max
+        PrintAnimalList(AnimalList); // Sorted list
 
-//        printAnimalList(getSingleAnimals(AnimalList)); //print list of all single animals
+        printAnimalList(getSingleAnimals(AnimalList)); //print list of all single animals
 
 /*        ********Remove single animals:*************/
-//        PrintAnimalList(AnimalList); // Print list of all animals: type - name - sex - age
-//        System.out.println("-----------");
-//        removeSingleAnimals(AnimalList); //remove single animals from list and print them
-//        System.out.println("-----------");
-//        PrintAnimalList(AnimalList); // Print list of animals left in the list
+        PrintAnimalList(AnimalList); // Print list of all animals: type - name - sex - age
+        System.out.println("-----------");
+        removeSingleAnimals(AnimalList); //remove single animals from list and print them
+        System.out.println("-----------");
+        PrintAnimalList(AnimalList); // Print list of animals left in the list
 
         printOldestAnimals(AnimalList); //print list of animals with max age
 
@@ -142,15 +147,15 @@ public class Run {
     }
 
     protected static void oneAnimalPresentation(Animal animal) {
-        // print: "Some new Animal came here..."
+        // print: "Some new animals.Animal came here..."
         animal.newAnimal();
 
         System.out.println("Oh, it's " + animal.getName() + "!!!");
 
-        // print: Animal moved for few steps
+        // print: animals.Animal moved for few steps
         animal.move((int) (Math.random() * 5) + 2);
 
-        if (!animal.sex.contains("female"))
+        if (!animal.getSex().contains("female"))
             System.out.println("He said:");
         else
             System.out.println("She said:");
@@ -159,7 +164,7 @@ public class Run {
         if (animal instanceof Jump) ((Jump) animal).jump();
         if (animal instanceof Fly) ((Fly) animal).fly();
 
-        if (!animal.sex.contains("female"))
+        if (!animal.getSex().contains("female"))
             System.out.println("And he left saying only...");
         else
             System.out.println("And she left saying only...");
@@ -173,7 +178,7 @@ public class Run {
     }
 
     protected static void SortByAge(LinkedList<Animal> animalList) {
-//        Animal animal = new Wolf("a", 1, 1, "a", "a", "a");
+//        animals.Animal animal = new animals.Wolf("a", 1, 1, "a", "a", "a");
 //        animalList.sort((o1, o2) -> animal.compare(o1, o2));
 
         animalList.sort((o1, o2) -> o1.getAge() - o2.getAge());
