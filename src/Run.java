@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -171,9 +172,13 @@ public class Run {
         AnimalList.forEach(animal -> animal.getAnimalData());
     }
 
-    protected static void SortByAge(LinkedList<Animal> AnimalList) {
-        Animal animal = new Wolf("a", 1, 1, "a", "a", "a");
-        AnimalList.sort((o1, o2) -> animal.compare(o1, o2));
+    protected static void SortByAge(LinkedList<Animal> animalList) {
+//        Animal animal = new Wolf("a", 1, 1, "a", "a", "a");
+//        animalList.sort((o1, o2) -> animal.compare(o1, o2));
+
+        animalList.sort((o1, o2) -> o1.getAge() - o2.getAge());
+
+
     }
 
     protected static LinkedList<Animal> getAllThisType(LinkedList<Animal> AnimalList, String type) {

@@ -1,6 +1,7 @@
 import java.util.Comparator;
 
-public abstract class Animal implements Comparator{
+public abstract class Animal{
+//    public abstract class Animal implements Comparator<Animal>{
 
 
     int age, height;
@@ -76,11 +77,9 @@ public abstract class Animal implements Comparator{
         System.out.println(this.type + " " + this.name + " " + this.sex + " " + this.getAge());
     }
 
-    public int compare(Object animal1, Object anmal2){
-        Animal a = (Animal)animal1;
-        Animal b = (Animal)anmal2;
-        return a.getAge() - b.getAge();
-    }
+//    public int compare(Animal animal1, Animal animal2){
+//        return animal1.getAge() - animal2.getAge();
+//    }
 
 
 }
