@@ -18,14 +18,14 @@ public class Actions {
             System.out.println(animal.getType() + " " + animal.getSex() + " " + animal.getName());
          }
 
-    static ArrayList<String> getTypes() {
+    private static ArrayList<String> getTypes() {
         HashSet<String> types = DataFile.getTypeSet();
         ArrayList<String> arrTypes = new ArrayList<>();
         types.forEach(type -> arrTypes.add(type));
         return arrTypes;
     }
 
-    static void init(ArrayList<Animal>[][] pairAnimals, int typesCount){
+    private static void init(ArrayList<Animal>[][] pairAnimals, int typesCount){
 
         for (int i=0; i<typesCount; i++) {
             pairAnimals[i] = new ArrayList[2];
@@ -34,7 +34,7 @@ public class Actions {
         }
     }
 
-    static void sortToPairs(LinkedList<Animal> animalList, ArrayList<Animal>[][] pairAnimals, ArrayList<String> arrTypes) {
+    private static void sortToPairs(LinkedList<Animal> animalList, ArrayList<Animal>[][] pairAnimals, ArrayList<String> arrTypes) {
         int index;
 
         for (Animal animal : animalList) {
@@ -62,7 +62,7 @@ public class Actions {
         return extractSingleAnimals(pairAnimals);
     }
 
-    static LinkedList<Animal> extractSingleAnimals(ArrayList<Animal>[][] pairAnimals) {
+    private static LinkedList<Animal> extractSingleAnimals(ArrayList<Animal>[][] pairAnimals) {
         LinkedList<Animal> singleAnimals = new LinkedList<>();
         int singles;
 
@@ -163,7 +163,7 @@ public class Actions {
         return map.get(type.toLowerCase());
     }
 
-    public static HashMap<String, LinkedList<Animal>> convertToMap(LinkedList<Animal> animalList) {
+    private static HashMap<String, LinkedList<Animal>> convertToMap(LinkedList<Animal> animalList) {
         HashMap<String, LinkedList<Animal>> map = new HashMap<String, LinkedList<Animal>>();
         utils.DataFile.getTypeSet().forEach(type -> map.put(type.toLowerCase(), new LinkedList<Animal>()));
         animalList.forEach(animal -> map.get(animal.getType().toLowerCase()).add(animal));

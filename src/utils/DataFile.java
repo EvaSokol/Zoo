@@ -14,10 +14,9 @@ import java.util.LinkedList;
 
 public class DataFile {
 
-    static String filepath = "resources/my_animals.txt";
-
-    static int AnimalCount = 0;
-    static HashSet<String> typeSet = new HashSet<>();
+    private static String filepath = "resources/my_animals.txt";
+    private static int AnimalCount = 0;
+    private static HashSet<String> typeSet = new HashSet<>();
 
     public static LinkedList<Animal> getAnimalList() {
         String animal_type;
@@ -50,7 +49,7 @@ public class DataFile {
         return AnimalCount;
     }
 
-    public static ArrayList<String> ReadFile(){
+    private static ArrayList<String> ReadFile(){
         ArrayList<String> stringBuffer = new ArrayList<>();
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(filepath))) {
             String line;
@@ -63,7 +62,7 @@ public class DataFile {
         return stringBuffer;
     }
 
-    protected static LinkedList<String[]> getArrayData() {
+    private static LinkedList<String[]> getArrayData() {
         //get data from file to string
         ArrayList<String> stringBuffer = ReadFile();
         stringBuffer.remove(0); //remove first service string
@@ -83,6 +82,5 @@ public class DataFile {
     public static HashSet<String> getTypeSet() {
         return typeSet;
     }
-
 
 }
