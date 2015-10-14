@@ -15,10 +15,21 @@ import java.util.LinkedList;
 public class DataFile {
 
     private static String filepath = "resources/my_animals.txt";
-    private static int AnimalCount = 0;
+    private static LinkedList<Animal> animalList;
+    private static int animalCount = 0;
     private static HashSet<String> typeSet = new HashSet<>();
+    private static DataFile dataFile;
+
+    private DataFile() {}
 
     public static LinkedList<Animal> getAnimalList() {
+        if (dataFile == null)
+            dataFile = new DataFile();
+            animalList = initAnimalList();
+        return animalList;
+    }
+
+    private static LinkedList<Animal> initAnimalList() {
         String animal_type;
         LinkedList<String[]> data_list = getArrayData();
         LinkedList<Animal> AnimalList = new LinkedList<>();
@@ -41,12 +52,12 @@ public class DataFile {
             else
                 System.out.println(line[0] + " " + "Nevedoma zverushka");
         }
-        AnimalCount = AnimalList.size();
+        animalCount = AnimalList.size();
         return AnimalList;
     }
 
     public static int getAnimalCount() {
-        return AnimalCount;
+        return animalCount;
     }
 
     private static ArrayList<String> ReadFile(){
